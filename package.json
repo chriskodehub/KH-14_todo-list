@@ -1,0 +1,35 @@
+{
+    "name": "kh-14_todo-list-js-firebase-webpack",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "directories": {
+        "doc": "docs"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "webpack",
+        "serve": "webpack serve"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/chriskodehub/KH-14_todo-list-js-firebase-webpack.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/chriskodehub/KH-14_todo-list-js-firebase-webpack/issues"
+    },
+    "homepage": "https://github.com/chriskodehub/KH-14_todo-list-js-firebase-webpack#readme",
+    "devDependencies": {
+        "css-loader": "^6.7.1",
+        "style-loader": "^3.3.1",
+        "webpack": "^5.70.0",
+        "webpack-cli": "^4.9.2",
+        "webpack-dev-server": "^4.7.4"
+    },
+    "dependencies": {
+        "lodash": "^4.17.21"
+    }
+}

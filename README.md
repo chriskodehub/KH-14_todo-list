@@ -27,14 +27,13 @@
     <br>
 </div>
 
-
-### Prepare your computer
+## Prepare your computer
 
 1. Install [node.js](https://nodejs.org/en/download/).
 2. Install [Git](https://git-scm.com/downloads).
 3. Install [Visual Studio Code](https://code.visualstudio.com/download).
 
-### Create project
+## Create project
 
 1. Create a folder `todo-list-project`.
 2. Create the folder structure according to the projekt. Don't create all files. The files will be created during project development.
@@ -45,11 +44,142 @@
 5. Open project folder in a terminal.
 6. Run command `git init && git add . && git commit -m "Initial commit"` [git-init](https://git-scm.com/docs/git-init), [git-add](https://git-scm.com/docs/git-add), [git-commit](https://git-scm.com/docs/git-commit).
 
-### Configure project
+## Configure project
 
 1. Open project folder in a terminal.
 2. Run command `npm init -y` [npm-init](https://docs.npmjs.com/cli/v8/commands/npm-init).
 3. Run command `npm install --save-dev webpack webpack-cli` [Webpack configuration](https://webpack.js.org/guides/getting-started/#basic-setup) and see how it works.
-4. Run command `npm install --save-dev webpack-dev-server` [Webpack DevServer](https://webpack.js.org/configuration/dev-server/) after detecting each change, the page will automatically reload. A solution similar to Live Server in Visual Studio Code, but it gives us the ability to work with automating generating JS, CSS code or automatic HTML creation.
+4. Run command `npm install --save-dev webpack-dev-server` [Webpack DevServer](https://webpack.js.org/configuration/dev-server/) after detecting each change, the page will automatically reload. A solution similar to Live Server in Visual Studio Code, but it gives us the ability to work with automating generating JS, CSS code or automatic HTML creation. Thanks to this solution, we can code even in `Notepad`, and all changes will be automatically refreshed.
 5. Run command `npm install --save lodash` install probably [the most popular node.js library](https://www.npmjs.com/package/lodash). We will use it to check if our application is properly configured.
 6. Run command `npm install --save-dev style-loader css-loader` install modules for [processing CSS](https://webpack.js.org/guides/asset-management/#loading-css) files.
+7. Create files [index.html](#indexhtml), [index.js](#indexjs), [style.css](#stylecss), [webpack.config.js](#webpackconfigjs) in the given locations and copy the sample content of the files.
+8. Change one line in the file [package.json](#packagejson) [Webpack Basic Setup](https://webpack.js.org/guides/getting-started/#basic-setup)
+9. Run command `npm run serve` this will start the server and prepare the necessary files.
+10. Enter the following address in the browser `localhost: 9999`. If you have done everything with the instructions, you should see a string **_Hello + webpack + our + application + work + fine_**
+11. Make changes to any of the files `index.html`,` index.js`, `style.css`, the changes should be visible in the browser immediately after saving the file.
+
+### index.html
+project-folder-name / dist / `index.html`
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Java script + Firebase project test page</title>
+</head>
+<body>
+<script src="bundle.js"></script>
+</body>
+</html>
+```
+
+### index.js
+project-folder-name / src / `index.js`
+
+```js
+import _ from 'lodash';
+import './style.css';
+
+function component() {
+    const element = document.createElement('div');
+
+    // Lodash, now imported by this script
+    element.innerHTML = _.join(['Hello', 'webpack', 'our', 'application', 'work', 'fine'], ' + ');
+    element.classList.add('hello');
+
+    return element;
+}
+document.body.appendChild(component());
+```
+
+### style.css
+project-folder-name / src / `style.css`
+
+```css
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    height: 100vh;
+}
+
+.hello {
+    color: red;
+    font-size: 2rem;
+    padding: 20px;
+    text-align: center;
+}
+```
+
+### webpack.config.js
+project-folder-name / `webpack.config.js`
+
+```js
+const path = require('path');
+
+module.exports = {
+    mode: 'development',
+    entry: './src/index.js',
+    devtool: 'eval-source-map',
+    devServer: {
+        static: {
+            directory: path.join(__dirname, 'dist'),
+        },
+        compress: true,
+        port: 9999,
+        hot: true,
+    },
+    module: {
+        rules: [
+            {
+                test: /\.css$/i,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                ],
+            },
+        ],
+    },
+    output: {
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'dist'),
+        clean: false,
+    },
+};
+```
+
+### package.json
+project-folder-name / `package.json`
+
+```
+{
+    // FIRST CHANGE
+    // change this line
+    "main": "index.js",
+        
+    // the line should look like this
+    "private": true,
+    
+    // SECOND CHANGE
+    // change this part of code
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+    },
+    
+    // the code should look like this
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "webpack",
+        "serve": "webpack serve"
+    },
+}
+```
+
+## Working with the project
+
+### Manually building the application
+
