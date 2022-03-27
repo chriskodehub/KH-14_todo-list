@@ -1,11 +1,11 @@
 <div align="center">
     <h1>Todo list</h1>
     <h3>
-        <a href="#">
+        <a href="https://chriskodehub.github.io/KH-14_todo-list-js-firebase-webpack/dist/">
             Live
         </a>
         <span> | </span>
-        <a href="#">
+        <a href="https://github.com/chriskodehub/KH-14_todo-list-js-firebase-webpack">
             GitHub
         </a>
     </h3>
@@ -54,9 +54,7 @@
 6. Run command `npm install --save-dev style-loader css-loader` install modules for [processing CSS](https://webpack.js.org/guides/asset-management/#loading-css) files.
 7. Create files [index.html](#indexhtml), [index.js](#indexjs), [style.css](#stylecss), [webpack.config.js](#webpackconfigjs) in the given locations and copy the sample content of the files.
 8. Change one line in the file [package.json](#packagejson) [Webpack Basic Setup](https://webpack.js.org/guides/getting-started/#basic-setup)
-9. Run command `npm run serve` this will start the server and prepare the necessary files.
-10. Enter the following address in the browser `localhost: 9999`. If you have done everything with the instructions, you should see a string **_Hello + webpack + our + application + work + fine_**
-11. Make changes to any of the files `index.html`,` index.js`, `style.css`, the changes should be visible in the browser immediately after saving the file.
+9. After completing the above steps, you can [work with the project]().
 
 ### index.html
 project-folder-name / dist / `index.html`
@@ -183,3 +181,15 @@ project-folder-name / `package.json`
 
 ### Manually building the application
 
+1. Open project folder in a terminal.
+2. Run command `npm run build` Webpack will start and all files will be created
+3. Go to the `dist` folder and run the` index.html` file in your web browser. All the changes made should be visible.
+4. Make changes to any of the files `index.html`,` index.js`, `style.css` i powtórz kroki 1-3.
+
+### Automatic building of the application after each change
+
+1. Open project folder in a terminal.
+2. Run command `npm run serve` this will start the server and prepare the necessary files.
+3. Enter the following address in the browser `localhost: 9999`. If you have done everything with the instructions, you should see a string **_Hello + webpack + our + application + work + fine_**
+4. Make changes to any of the files `index.html`,` index.js`, `style.css`, the changes should be visible in the browser immediately after saving the file.
+5. To shut down the server, go to a terminal and click on keyboard `Ctrl + C`.
