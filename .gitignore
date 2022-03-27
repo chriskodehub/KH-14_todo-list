@@ -103,7 +103,7 @@ out
 
 # Nuxt.js build / generate output
 .nuxt
-dist
+#dist # publish to work live view on GitHub
 
 # Gatsby files
 .cache/
